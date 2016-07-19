@@ -68,8 +68,8 @@ class NewVisitorTest(LiveServerTestCase):
         # Francis visits the home page and there is no sign of Edith's list
         self.browser.get(self.live_server_url)
         page_text = self.browser.find_element_by_tag_name('body').text
-        sefl.assertNotIn('Buy peacock feathers', page_text)
-        sefl.assertNotIn('to make a fly', page_text)
+        self.assertNotIn('Buy peacock feathers', page_text)
+        self.assertNotIn('to make a fly', page_text)
 
         # Francis starts a new list by  enterint a new item
         inputbox = self.browser.find_element_by_id('id_new_item')
