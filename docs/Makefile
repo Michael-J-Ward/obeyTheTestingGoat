@@ -234,6 +234,7 @@ gh-pages:
 	make clean
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	cd $(BUILDDIR)/html
+	git checkout gh-pages
 	git add .
 	git commit -m "creating and publishing docs"
 	git push origin gh-pages
