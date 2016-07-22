@@ -2,3 +2,8 @@ machine:
   python:
     version: 3.4.5
 
+deployment:
+  master:
+    branch: master
+    commands:
+      - ./publish_github_pages.sh
