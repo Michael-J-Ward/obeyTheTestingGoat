@@ -6,4 +6,4 @@ deployment:
   master:
     branch: master
     commands:
-      - ./publish_github_pages.sh
+      - ./check_circleCI_config.sh
