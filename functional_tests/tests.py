@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 class NewVisitorTest(LiveServerTestCase):
-    
+
     def setUp(self):
         self.browser = webdriver.Firefox()
         self.browser.implicitly_wait(3)
@@ -41,7 +41,7 @@ class NewVisitorTest(LiveServerTestCase):
         inputbox.send_keys('Buy peacock feathers')
 
         # When she hits enter, she is taken to a new url
-        # and now the page lists "1: Buy peacock feathers" 
+        # and now the page lists "1: Buy peacock feathers"
         # as an item in a to-do list
         inputbox.send_keys(Keys.ENTER)
         edith_list_url = self.browser.current_url
@@ -87,3 +87,25 @@ class NewVisitorTest(LiveServerTestCase):
         self.assertIn('Buy milk', page_text)
 
         # Satisfied, they both go back to sleep
+
+    def test_layout_and_styling(self):
+        # Edith goes to the home page
+        self.browser.get(self.live_server_url)
+        self.browser.set_window_size(1024, 768)
+
+        # She notices the input box is nicely centered
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            512,
+            delta=5
+        )
+        # She starts a new list and sees the input is nicely
+        # centered there too
+        inputbox.send_keys('testing\n')
+        inputbox = self.browser.find_element_by_id('id_new_item')
+        self.assertAlmostEqual(
+            inputbox.location['x'] + inputbox.size['width'] / 2,
+            512,
+            delta=5
+        )
