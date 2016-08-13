@@ -1,9 +1,0 @@
-machine:
-  python:
-    version: 3.5.1
-
-deployment:
-  master:
-    branch: master
-    commands:
-      - ./check_circleCI_config.sh
